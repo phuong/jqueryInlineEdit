@@ -63,7 +63,7 @@
         });
         $element.click(function () {
             var $this = $(this);
-            var $connectWith = $("#" + $this.attr("data-connect-with"));
+            var $connectWith = $(options.connectWith);
             var defaultText = $this.data('text');
 
             if (options.inputType == 'textarea') {
