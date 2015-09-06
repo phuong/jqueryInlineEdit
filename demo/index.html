@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+    <head>
+        <title>jQuery Inline edit</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="jquery inline edit, jquery click to edit content" />
+        <meta name="robots" content="index, follow" />
+        <link href="main.css" rel="stylesheet" type="text/css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="../src/jquery.autoresize.js"></script>
+        <script type="text/javascript" src="../src/jquery.inline-edit.js"></script>
+    </head>
+    <body>
+        <input type="hidden" name="" id="username" />
+        <input type="hidden" name="" id="title">
+        <h2 class="editable" data-connect-with="username" data-max-length="50" data-input-type="input">
+            This is title
+        </h2>
+        
+        <p class="editable" data-connect-with="username" data-max-length="50">Click me to edit
+        </p>
+
+        
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // simplest example
+                $('.editable').inlineEdit();
+            });
+        </script>
+
+    </body>
+</html>
