@@ -5,6 +5,10 @@ body {
     padding: 0px;
     text-shadow: none;
 }
+a, a:hover, a:visited {
+    color:#FFF;
+    font-weight: bold;
+}
 body * {
     font-family: Roboto, sans-serif;
 }
@@ -31,8 +35,15 @@ h2 {
     max-width: 980px;
     margin: auto;
 }
+#footer {
+    margin: 30px 0px 30px 0px;
+}
 
-
+#download {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 /* Component, Please dont care about this */
 /* Doxy pretty-printing styles. Used with prettify.js.  */
 
