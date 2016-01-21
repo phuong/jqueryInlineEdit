@@ -1,33 +1,176 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+<html>
     <head>
         <title>jQuery Inline edit</title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="jquery inline edit, jquery click to edit content" />
         <meta name="robots" content="index, follow" />
-        <link href="main.css" rel="stylesheet" type="text/css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script type="text/javascript" src="../src/jquery.autoresize.js"></script>
-        <script type="text/javascript" src="../src/jquery.inline-edit.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,600|Open+Sans:400,300' rel='stylesheet' type='text/css' />
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css" />         
+        <link rel="stylesheet" href="main.css"  type="text/css" />
     </head>
     <body>
-        <input type="hidden" name="" id="username" />
-        <input type="hidden" name="" id="title">
-        <h2 class="editable" data-connect-with="#title" data-max-length="50" data-input-type="input">
-            This is title
-        </h2>
+
+        <div class="container">
+
+            <div>
+                <h1>Jquery inline edit <sup class="sup">Allow user click on element to edit content</sup></h1>
+                <div class="thin"></div>
+            </div>
+
+            <h2>Simple usage</h2>
+   
+            
+            <div class="tab">
+                <ul>
+                    <li target="result" class="active"> Result</li>
+                    <li target="html">HTML</li>
+                    <li target="js">Javascript</li>                    
+                </ul>
+                
+                <div class="tab-item active" tab-name="result">
+                    <div class="padding20">
+                        <div style="font-size: 26pt; font-weight: bold" class="editable" data-connect-with="#title" data-max-length="50" data-input-type="input">
+                            Click me to edit
+                        </div>
+
+                        <p class="editable" data-connect-with="#username" data-max-length="50">
+                            Click me to edit, I am long text and autogrow
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="tab-item" tab-name="html">
+                    <pre class="prettyprint">
+    &lt;h2 class="editable" data-connect-with="title" data-max-length="50" data-input-type="input">
+       Click me to edit
+    &lt;/h2>
+
+    &lt;p class="editable" data-connect-with="username" data-max-length="50">
+       Click me to edit, I am long text and autogrow
+    &lt;/p>                                          </pre>
+                </div>
+                
+                <div class="tab-item" tab-name="js">
+             <pre class="prettyprint">
+    $(document).ready(function() {
+       $('.editable').inlineEdit();
+    });                           </pre>
+                </div>
+            </div>            
+            
+            <br>
+        <h2>More options usage</h2>
+        <div class="tab">
+            <ul>
+                <li target="result" class="active"> Result</li>
+                <li target="html">HTML</li>
+                <li target="js">Javascript</li>                    
+            </ul>
+
+            <div class="tab-item active" tab-name="result">
+                <div id="defaultText">
+This is default text <br>
+ .....................<br>
+Welcome to your life <br>
+There's no turning back <br>
+Even while we sleep <br>
+We will find you<br> 
+Acting on your best behaviour <br>
+Turn your back on mother nature<br>
+Everybody wants to rule the world     
+                </div>
+                
+                <br><br><br>
+                <div class="editable2 thin" id="limitText">
+                    This editor is limit text, click me to edit
+                </div>
+                
+                
+            </div>   
+            <div class="tab-item" tab-name="html">
+                
+            </div>
+            <div class="tab-item" tab-name="js">
+                
+            </div>            
+        </div>
         
-        <p class="editable" data-connect-with="#username" data-max-length="50">Click me to edit
-        </p>
+            
+            
+            
+            <h2>Options</h2>
+            <div class="tab">
+                <div class="tab-item active">
+            <pre class="prettyprint">
 
-        
+    //Default options
+    var options = {
+        //Function on update hidden field
+        onUpdate: function () {
+        },
+        //Function on focus to ediable element
+        onFocus: function () {
+        },
+        //Function call on key down on input field
+        onKeyDown: function () {
+        },
+        //Css class when hover on editable item
+        hoverClass: 'hover',
+        //Show or hide counter in case set max length
+        showCounter: false,
+        //Input type, textarea or input type text
+        inputType: 'textarea',
+        //Maxth length of this input
+        maxLength: false
+    };
+            </pre>
+            </div>
+        </div>
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                // simplest example
-                $('.editable').inlineEdit();
-            });
-        </script>
+       
+            
+            
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>            <script type="text/javascript" src="../src/jquery.autoresize.js"></script>
+            <script type="text/javascript" src="../src/jquery.inline-edit.js"></script>           
+            <script type="text/javascript">
+                !function(a){"function"==typeof define&&define.amd?define(["jquery"],function(b){return a(b)}):"object"==typeof module&&"object"==typeof module.exports?module.exports=a(require("jquery")):a(window.jQuery)}(function(a){"use strict";function b(a){void 0===a&&(a=window.navigator.userAgent),a=a.toLowerCase();var b=/(edge)\/([\w.]+)/.exec(a)||/(opr)[\/]([\w.]+)/.exec(a)||/(chrome)[ \/]([\w.]+)/.exec(a)||/(iemobile)[\/]([\w.]+)/.exec(a)||/(version)(applewebkit)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec(a)||/(webkit)[ \/]([\w.]+).*(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec(a)||/(webkit)[ \/]([\w.]+)/.exec(a)||/(opera)(?:.*version|)[ \/]([\w.]+)/.exec(a)||/(msie) ([\w.]+)/.exec(a)||a.indexOf("trident")>=0&&/(rv)(?::| )([\w.]+)/.exec(a)||a.indexOf("compatible")<0&&/(mozilla)(?:.*? rv:([\w.]+)|)/.exec(a)||[],c=/(ipad)/.exec(a)||/(ipod)/.exec(a)||/(windows phone)/.exec(a)||/(iphone)/.exec(a)||/(kindle)/.exec(a)||/(silk)/.exec(a)||/(android)/.exec(a)||/(win)/.exec(a)||/(mac)/.exec(a)||/(linux)/.exec(a)||/(cros)/.exec(a)||/(playbook)/.exec(a)||/(bb)/.exec(a)||/(blackberry)/.exec(a)||[],d={},e={browser:b[5]||b[3]||b[1]||"",version:b[2]||b[4]||"0",versionNumber:b[4]||b[2]||"0",platform:c[0]||""};if(e.browser&&(d[e.browser]=!0,d.version=e.version,d.versionNumber=parseInt(e.versionNumber,10)),e.platform&&(d[e.platform]=!0),(d.android||d.bb||d.blackberry||d.ipad||d.iphone||d.ipod||d.kindle||d.playbook||d.silk||d["windows phone"])&&(d.mobile=!0),(d.cros||d.mac||d.linux||d.win)&&(d.desktop=!0),(d.chrome||d.opr||d.safari)&&(d.webkit=!0),d.rv||d.iemobile){var f="msie";e.browser=f,d[f]=!0}if(d.edge){delete d.edge;var g="msedge";e.browser=g,d[g]=!0}if(d.safari&&d.blackberry){var h="blackberry";e.browser=h,d[h]=!0}if(d.safari&&d.playbook){var i="playbook";e.browser=i,d[i]=!0}if(d.bb){var j="blackberry";e.browser=j,d[j]=!0}if(d.opr){var k="opera";e.browser=k,d[k]=!0}if(d.safari&&d.android){var l="android";e.browser=l,d[l]=!0}if(d.safari&&d.kindle){var m="kindle";e.browser=m,d[m]=!0}if(d.safari&&d.silk){var n="silk";e.browser=n,d[n]=!0}return d.name=e.browser,d.platform=e.platform,d}return window.jQBrowser=b(window.navigator.userAgent),window.jQBrowser.uaMatch=b,a&&(a.browser=window.jQBrowser),window.jQBrowser});                
+                $(document).ready(function() {
+                    // simplest example
+                    $('.editable').inlineEdit({
+                        onUpdate: function () {
 
+                        }
+                    });
+                    
+                    $('#limitText').inlineEdit({
+                        showCounter: true,
+                        maxLength: 100,
+                        inputType: 'input'
+                    });
+                    
+                    
+                    $('#defaultText').inlineEdit({
+                        defaultText: true,
+                        connectWith: '#defaultTextTarget'
+                    });                    
+                    
+                    //Tab
+                    $(".tab li").click(function () {
+                        var $container = $(this).closest('.tab');
+                        var $parent = $(this).parent();
+                        var target = $(this).attr('target');
+                        console.log(target);
+                        $parent.find('li').removeClass('active');
+                        $(this).addClass('active');
+                        $container.find('.tab-item').removeClass('active');
+                        $container.find('div[tab-name="' + target + '"]').addClass('active');
+                    });
+                  
+                });
+
+            </script> 
+        </div>
     </body>
 </html>
