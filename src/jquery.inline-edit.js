@@ -4,6 +4,7 @@
  updated: 2016-09-06
  license: http://www.opensource.org/licenses/mit-license.php
  */
+// Next version, escape white space
 (function($) {
 
     var pluginName = "inlineEdit";
@@ -103,6 +104,7 @@
                 css[properties[i]] = $this.css(properties[i]);
             }
             if(options.defaultText) {
+                options.defaultText = false;
                 $replaceWith.val($element.text().trim());
             } else {
                 $replaceWith.val($connectWith.val().trim());
@@ -119,7 +121,7 @@
             var strLength = $replaceWith.val().length * 2;
             $replaceWith[0].setSelectionRange(strLength, strLength);
             //Call on focus method
-            options.onFocus.call(element);
+            options.onFocus.call(element, $replaceWith.val());
             $replaceWith.blur(function(e) {
                 var val = $(this).val().trim();
                 if (options.maxLength) {
@@ -134,7 +136,7 @@
                 $(this).remove();
                 $counter.remove();
                 $this.show();
-                options.onUpdate.call(element, e, val);
+                options.onUpdate.call(element, val);
             }).keydown(function(e) {
                 options.onKeyDown.call(element, e);
                 if (options.maxLength > 0) {
@@ -151,7 +153,6 @@
             });
         });
     }
-
     $.fn[pluginName] = function(options) {
         return this.each(function() {
             $.data(this, 'plugin_' + pluginName, new InlineEdit(this, options));

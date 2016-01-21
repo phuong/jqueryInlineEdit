@@ -71,7 +71,7 @@
             <div class="tab-item active" tab-name="result">
                 <div id="defaultText">
 This is default text <br>
- .....................<br>
+.....................<br>
 Welcome to your life <br>
 There's no turning back <br>
 Even while we sleep <br>
@@ -79,20 +79,59 @@ We will find you<br>
 Acting on your best behaviour <br>
 Turn your back on mother nature<br>
 Everybody wants to rule the world     
-                </div>
+                </div>              
                 
                 <br><br><br>
-                <div class="editable2 thin" id="limitText">
-                    This editor is limit text, click me to edit
-                </div>
+<div class="editable2 thin" id="limitText">
+    This editor is limit text, click me to edit
+</div>
                 
                 
             </div>   
             <div class="tab-item" tab-name="html">
-                
+                <pre class="prettyprint">                
+    &lt;input type="hidden" id="defaultTextTarget" name="someHiddenField" />
+    &lt;div id="defaultText">
+    This is default text 
+    .....................
+    Welcome to your life
+    There's no turning back 
+    Even while we sleep
+    We will find you
+    Acting on your best behaviour
+    Turn your back on mother nature
+    Everybody wants to rule the world     
+    &lt;/div>              
+
+
+    &lt;div id="limitText">
+        This editor is limit text, click me to edit
+    &lt;/div>    
+                </pre>           
             </div>
             <div class="tab-item" tab-name="js">
-                
+                <pre class="prettyprint">
+    $('#limitText').inlineEdit({
+        showCounter: true,
+        maxLength: 100,
+        defaultText: true,
+        inputType: 'input'
+    });
+
+
+    $('#defaultText').inlineEdit({
+        defaultText: true,
+        connectWith: '#defaultTextTarget',
+        onFocus: function (val) {
+            console.log("You are inside me LOL!");
+            console.log(val);
+        },
+        onUpdate: function (val) {
+            console.log("You almost done");
+            console.log(val);
+        }
+    });                          
+                </pre>                
             </div>            
         </div>
         
@@ -147,13 +186,22 @@ Everybody wants to rule the world
                     $('#limitText').inlineEdit({
                         showCounter: true,
                         maxLength: 100,
+                        defaultText: true,
                         inputType: 'input'
                     });
                     
                     
                     $('#defaultText').inlineEdit({
                         defaultText: true,
-                        connectWith: '#defaultTextTarget'
+                        connectWith: '#defaultTextTarget',
+                        onFocus: function (val) {
+                            console.log("You are inside me LOL!");
+                            console.log(val);
+                        },
+                        onUpdate: function (val) {
+                            console.log("You almost done");
+                            console.log(val);
+                        }
                     });                    
                     
                     //Tab
